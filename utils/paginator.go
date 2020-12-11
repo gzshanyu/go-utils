@@ -9,7 +9,7 @@ type Paginator struct {
 	LastPage  int32
 }
 
-func New(paged int32, pageSize ...int32) *Paginator {
+func NewPaginator(paged int32, pageSize ...int32) *Paginator {
 	var psize int32
 	if pageSize != nil {
 		if pageSize[0] > 0 {
