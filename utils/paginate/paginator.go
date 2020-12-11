@@ -1,4 +1,8 @@
-package utils
+package paginate
+
+import (
+	"github.com/gzshanyu/go-utils/utils/json"
+)
 
 type Paginator struct {
 	Paged     int32
@@ -9,7 +13,7 @@ type Paginator struct {
 	LastPage  int32
 }
 
-func NewPaginator(paged int32, pageSize ...int32) *Paginator {
+func New(paged int32, pageSize ...int32) *Paginator {
 	var psize int32
 	if pageSize != nil {
 		if pageSize[0] > 0 {
@@ -51,7 +55,7 @@ func (a *Paginator) ToPager(pbPager interface{}) *interface{} {
 		a.PrevPage = 1
 	}
 
-	StructCopy(pbPager, a)
+	json.StructCopy(pbPager, a)
 	return &pbPager
 }
 

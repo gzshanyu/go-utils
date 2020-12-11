@@ -1,4 +1,4 @@
-package utils
+package calculate
 
 import (
 	"github.com/shopspring/decimal"
@@ -6,13 +6,13 @@ import (
 )
 
 // 计算总价
-func CalculateTotalPrice(price float32, num int32) float32 {
+func TotalPrice(price float32, num int32) float32 {
 	value, _ := decimal.NewFromFloat32(price).Mul(decimal.NewFromInt32(num)).Round(2).Float64()
 	return float32(value)
 }
 
 // 计算折扣
-func CalculateRate(price1 float32, price2 float32) float32 {
+func Rate(price1 float32, price2 float32) float32 {
 	if price2 <= 0 {
 		return 0
 	}
@@ -21,13 +21,13 @@ func CalculateRate(price1 float32, price2 float32) float32 {
 }
 
 // 计算折扣价格
-func CalculatePriceByRate(price float32, rate float32) float32 {
+func RatePrice(price float32, rate float32) float32 {
 	value, _ := decimal.NewFromFloat32(price).Mul(decimal.NewFromFloat32(rate)).Div(decimal.NewFromFloat32(100)).Float64()
 	return float32(value)
 }
 
 // 计算单位价格
-func CalculateUnitPrice(price float32, num int32) float32 {
+func UnitPrice(price float32, num int32) float32 {
 	if num <= 0 {
 		return 0
 	}
